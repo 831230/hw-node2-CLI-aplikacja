@@ -1,6 +1,11 @@
-const {program} = require("commander");
+const { program } = require("commander");
 
-const {getContactsList, getContactById, removeContact, addContact} = require("./contacts")
+const {
+  getContactsList,
+  getContactById,
+  removeContact,
+  addContact,
+} = require("./contacts");
 
 program
   .option("-a, --action [string]", "choose action")
@@ -16,24 +21,24 @@ const argv = program.opts();
 function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
-      getContactsList()
+      getContactsList();
       break;
 
     case "get":
-      getContactById(id)
+      getContactById(id);
       break;
 
     case "add":
-      addContact(name, email, phone)
+      addContact(name, email, phone);
       break;
 
     case "remove":
-      removeContact(id)
+      removeContact(id);
       break;
 
     default:
       console.warn("\x1B[31m Unknown action type!");
   }
-};
+}
 
-invokeAction(argv)
+invokeAction(argv);
